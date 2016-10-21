@@ -1,2 +1,10 @@
 function [score] = compare(motTeste,motBase)
-score = rand();
+
+%vecteur acoustique motBase
+vb = calculVecteurAcoustique(motBase);
+
+%vecteur acoustique motTeste
+vt = calculVecteurAcoustique(motTeste);
+
+score = 1;
+end
