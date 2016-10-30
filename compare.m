@@ -17,10 +17,21 @@ for i = 1:vb_size
 end
 
 %calucl du chemin
+D=d;
 for j =  1:vt_size
-    min = min(min(D(i,j+1),D(i+1,j+1)),D(i+1,j));
-    D(i+1,j)=d(i+1,j)+min;
+    for i = 1:vb_size
+    if j == 1 && i == 1
+        M = 0;
+    elseif i == 1
+        M = D{i,j-1};
+    elseif j == 1
+        M = D{i-1,j};
+    else   
+        M = min(min(D{i,j-1},D{i-1,j-1}),D{i-1,j});
+    end
+    D{i,j}=d{i,j}+ M ;
+    end
 end
 
-score = 1;
+score = D{vb_size,vt_size};
 end
