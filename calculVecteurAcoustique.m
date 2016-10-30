@@ -2,14 +2,13 @@ function Y=calculVecteurAcoustique(a)
 %LISSAGE Summary of this function goes here
 %   Detailed explanation goes here
 
-a=a';
 %a = audioread('./fichiers_wav/adroite2.wav')';
 %subplot(1,4,1), plot(a);
 
 size = length(a)/160;
 
 %fenetre de hamming
-h = hamming(480);
+h = hamming(480)';
 %subplot(1,2,1), plot(h);
 
 %coefficient filtre passe bas
