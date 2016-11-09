@@ -6,10 +6,11 @@ vb = calculVecteurAcoustique(motBase);
 %vecteur acoustique motTeste
 vt = calculVecteurAcoustique(motTeste);
 
+%taille des listes de vecteur
 vb_size = size(vb,2);
 vt_size = size(vt,2);
 
-%calcul du tableau des distance locales
+%calcul du tableau des distance locales => matrice d
 for i = 1:vb_size
     for j = 1:vt_size
         %distance euclidienne
@@ -19,7 +20,8 @@ end
 
 
 %calucl du chemin
-%M = distance precedents
+%M = distance precedente
+%D = matrice des distances cumullés
 D=d;
 tab_chemin = d;
 for j =  1:vt_size
