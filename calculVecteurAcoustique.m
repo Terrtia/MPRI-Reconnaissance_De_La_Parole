@@ -5,19 +5,25 @@ function Y=calculVecteurAcoustique(a)
 %a = audioread('./fichiers_wav/adroite2.wav')';
 %subplot(1,4,1), plot(a);
 
-size = length(a)/160;
+%taille de la fenetre
+ftaille = 240;
 
 %fenetre de hamming
-h = hamming(480)';
+h = hamming(ftaille)';
 %subplot(1,2,1), plot(h);
 
 %coefficient filtre passe bas
-x = 25;
+x = 15;
+%decalage de la fenetre
+decal = 80;
+
+size = length(a)/decal;
+
  
 for i=1:round(size)
-     if(length(a)>480+160*i)
+     if(length(a)>ftaille+decal*i)
         %fenetre temporelle
-        w=a(1+160*i:480+160*i);
+        w=a(1+decal*i:ftaille+decal*i);
         %subplot(1,2,2), plot(w);
 
         %fenetre recouvrante
@@ -35,7 +41,7 @@ for i=1:round(size)
         %plot(c);
 
         %filtre passe bas
-        c(x :480 - x) = 0;
+        c(x :ftaille - x) = 0;
         %plot(c);
 
         %formants
